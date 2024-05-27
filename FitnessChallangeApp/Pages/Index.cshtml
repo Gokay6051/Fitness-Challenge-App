@@ -1,0 +1,35 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Challenges";
+}
+
+<h1>Challenges</h1>
+
+<li class="nav-item">
+    <a class="nav-link text-dark" asp-page="/BrowseChallenges" style="font-size: 35px;">Browse Challenges</a>
+</li>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Difficulty</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Challenges)
+    {
+        <tr>
+            <td>@item.Title</td>
+            <td>@item.Category</td>
+            <td>@item.Difficulty</td>
+            <td><a asp-page="./Details" asp-route-id="@item.Id">View</a></td>
+            <td><a asp-page="./Join" asp-route-id="@item.Id">Join</a></td>
+            <td><a asp-page="./Edit" asp-route-id="@item.Id">Edit</a></td>
+        </tr>
+    }
+    </tbody>
+</table>

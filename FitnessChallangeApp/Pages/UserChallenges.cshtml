@@ -1,0 +1,31 @@
+@page
+@model FitnessChallengeApp.Pages.UserChallengesModel
+@{
+    ViewData["Title"] = "My Challenges";
+}
+
+<h2>My Challenges</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Challenge</th>
+            <th>Progress</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.UserChallenges)
+    {
+        <tr>
+            <td>@item.Challenge.Title</td> <!-- 'Chal' yerine 'Challenge' kullanılıyor -->
+            <td>@item.Progress</td>
+            <td>
+                <form method="post" asp-page-handler="Delete" asp-route-id="@item.Id" onsubmit="return confirm('Are you sure you want to delete this challenge?');">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

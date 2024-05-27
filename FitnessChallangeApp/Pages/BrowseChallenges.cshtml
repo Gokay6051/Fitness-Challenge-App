@@ -1,0 +1,57 @@
+@page
+@model FitnessChallengeApp.Pages.BrowseChallengesModel
+@{
+    ViewData["Title"] = "Browse Challenges";
+}
+
+<h2>Browse Challenges</h2>
+
+<form method="get">
+    <div class="form-group">
+        <label for="Keyword">Keyword</label>
+        <input type="text" class="form-control" id="Keyword" name="Keyword" value="@Model.Keyword">
+    </div>
+    <div class="form-group">
+        <label for="StartDate">Start Date</label>
+        <input type="date" class="form-control" id="StartDate" name="StartDate" value="@Model.StartDate">
+    </div>
+    <div class="form-group">
+        <label for="EndDate">End Date</label>
+        <input type="date" class="form-control" id="EndDate" name="EndDate" value="@Model.EndDate">
+    </div>
+    <div class="form-group">
+        <label for="Difficulty">Difficulty</label>
+        <select class="form-control" id="Difficulty" name="Difficulty">
+            <option value="">All</option>
+            <option value="Easy" selected="@(Model.Difficulty == "Easy")">Easy</option>
+            <option value="Medium" selected="@(Model.Difficulty == "Medium")">Medium</option>
+            <option value="Hard" selected="@(Model.Difficulty == "Hard")">Hard</option>
+
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Difficulty</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var challenge in Model.Challenges)
+        {
+            <tr>
+                <td>@challenge.Title</td>
+                <td>@challenge.Description</td>
+                <td>@challenge.StartDate.ToString("yyyy-MM-dd")</td>
+                <td>@challenge.EndDate.ToString("yyyy-MM-dd")</td>
+                <td>@challenge.Difficulty</td>
+            </tr>
+        }
+    </tbody>
+</table>

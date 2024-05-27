@@ -1,0 +1,40 @@
+@page "{id:int}"
+@model JoinModel
+@{
+    ViewData["Title"] = "Join Challenge";
+}
+
+<h1>Join Challenge</h1>
+
+<h3>Do you want to join this challenge?</h3>
+
+<div>
+    <h4>@Model.Challenge.Title</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Description
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Challenge.Description
+        </dd>
+        <dt class="col-sm-2">
+            Category
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Challenge.Category
+        </dd>
+        <dt class="col-sm-2">
+            Difficulty
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Challenge.Difficulty
+        </dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Challenge.Id" />
+        <button type="submit" class="btn btn-primary">Join</button>
+        <a asp-page="./Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
